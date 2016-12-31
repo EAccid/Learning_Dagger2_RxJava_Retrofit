@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TXT Translator</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_to_translate">The Google Cloud Translation API can dynamically translate text between thousands of language pairs. The Cloud Translation API lets websites and programs integrate with the translation service programmatically. The Google Translation API is part of the larger Cloud Machine Learning API family.</string>
+</resources>
