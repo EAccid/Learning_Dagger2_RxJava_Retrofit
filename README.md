@@ -1,4 +1,4 @@
 # TXT Translator
-Work with Google Translation API
+Work with Yandex Translator API
 
 Using Dagger2 and Retrofit
