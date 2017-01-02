@@ -1,4 +1,4 @@
 # TXT Translator
 Work with Yandex Translator API
 
-Using Dagger2 and Retrofit
+Using Dagger2, Retrofit, RxJava
