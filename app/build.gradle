@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,9 +35,10 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
 
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
-    apt 'com.google.dagger:dagger-compiler:2.2'
-    compile 'com.google.dagger:dagger:2.8'
-    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.google.dagger:dagger:2.0.2'
+    apt "com.google.dagger:dagger-compiler:2.0.2"
+    compile 'javax.annotation:jsr250-api:1.0'
 
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
