@@ -1,5 +1,6 @@
 package com.eaccid.txttranslator;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eaccid.txttranslator.fromtext.WordFromText;
-import com.eaccid.txttranslator.libtranslator.gtranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.libtranslator.ytranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.libtranslator.ytranslator_impl.Translator;
+import com.eaccid.txttranslator.libtranslator.lingualeo_impl.translator.TranslatorFactory;
+import com.eaccid.txttranslator.libtranslator.lingualeo_impl.translator.Translators;
 
 public class MainActivity extends AppCompatActivity implements BaseView, OnWordFromTextViewTouchListener.OnWordFromTextClickListener {
 
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
     @Override
     public void OnWordClicked(WordFromText WordFromText) {
         Toast.makeText(this, WordFromText.getText(), Toast.LENGTH_SHORT).show();
+
+        new AsyncTest().execute();
     }
 
     @Override
@@ -75,4 +81,19 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
     public void showTextTranslation(TextTranslation text) {
 
     }
+
+    private class AsyncTest extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            Translator translator = TranslatorFactory.newTranslator(Translators.YANDEX_TRANSLATOR);
+            translator.translate("mad");
+            System.out.println(translator.getTranslations());
+
+            return null;
+        }
+
+    }
+
 }
