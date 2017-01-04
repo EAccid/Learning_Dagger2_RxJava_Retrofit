@@ -9,10 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.eaccid.txttranslator.R;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements BaseView, OnWordFromTextViewTouchListener.OnWordFromTextClickListener {
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
     }
 
     @Override
-    public void showTextTranslation(TextTranslation text) {
+    public void showTextTranslation(List<String> text) {
 
     }
 

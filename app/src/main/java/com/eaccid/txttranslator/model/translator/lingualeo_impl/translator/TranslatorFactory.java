@@ -1,6 +1,6 @@
 package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
 
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.Translator;
+import com.eaccid.txttranslator.model.translator.translator.Translator;
 import com.eaccid.txttranslator.model.translator.ytranslator_impl.YandexTranslator;
 
 public class TranslatorFactory {

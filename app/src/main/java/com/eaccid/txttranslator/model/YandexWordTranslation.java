@@ -1,17 +1,18 @@
 package com.eaccid.txttranslator.model;
 
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.model.translator.translator.TextTranslation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WordTranslation implements TextTranslation {
+public class YandexWordTranslation implements TextTranslation, Serializable {
 
     private String word;
     @SerializedName("text")
     @Expose
-    private List<String> text;
+    private List<String> translations;
 
     @Override
     public String getTranscription() {
@@ -20,7 +21,7 @@ public class WordTranslation implements TextTranslation {
 
     @Override
     public List<String> getTranslates() {
-        return text;
+        return translations;
     }
 
     @Override
@@ -40,11 +41,11 @@ public class WordTranslation implements TextTranslation {
 
     @Override
     public boolean isEmpty() {
-        return text.isEmpty();
+        return translations.isEmpty();
     }
 
     public void setText(List<String> text) {
-        this.text = text;
+        this.translations = text;
     }
 
     public void setWord(String word) {

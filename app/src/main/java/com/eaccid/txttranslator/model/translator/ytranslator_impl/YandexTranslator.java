@@ -2,66 +2,66 @@ package com.eaccid.txttranslator.model.translator.ytranslator_impl;
 
 import android.util.Log;
 
-import com.eaccid.txttranslator.model.WordTranslation;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.ytranslator.YandexRetrofitService;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.ytranslator.YandexTranslationService;
+import com.eaccid.txttranslator.model.YandexWordTranslation;
+import com.eaccid.txttranslator.model.translator.translator.TextTranslation;
+import com.eaccid.txttranslator.model.translator.translator.Translator;
 
-import rx.Observable;
+import java.net.SocketTimeoutException;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+
 
 public class YandexTranslator implements Translator {
 
     private static final String KEY = "trnsl.1.1.20170102T182143Z.3aee628aacf9fe84.e192f0a3b45ee5803afc2cdefc545fcdb49ddcf4";
+    private TextTranslation translation;
 
-    private YandexWordTranslation translation;
+    public YandexTranslator() {
+        translation = new YandexWordTranslation();
+    }
 
+    //TODO refactor: add OkHttpClient, injections
+    //temp translation
     @Override
     public boolean translate(final String sourceText) {
-
-//        Gson gson = new GsonBuilder().create();
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .baseUrl(BASE_URL)
-//                .build();
-//        YandexTranslationService service = retrofit.create(YandexTranslationService.class);
-//        Call<Object> call = service.translate(
-//                KEY,
-//                sourceText,
-//                "en-ru"
-//        );
-
-//        try {
-//            Response<Object> response = call.execute();
-//            System.out.println(response.body());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         YandexTranslationService retrofitService = YandexRetrofitService.createTranslationService();
-        Observable<WordTranslation> wordObs = retrofitService.translate(KEY,
-                sourceText,
-                "en-ru");
-
-        wordObs.subscribeOn(Schedulers.io())
+        retrofitService.translate(KEY, sourceText, "en-ru")
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(wordTranslation -> {
                     wordTranslation.setWord(sourceText);
                     return wordTranslation;
                 })
-                .subscribe(word -> {
-                    Log.i("YandexTranslator", "" + word.getWord() + " - " +  word.getTranslates());
+                .subscribe(new Subscriber<YandexWordTranslation>() {
+                    @Override
+                    public void onCompleted() {
+                        unsubscribe();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        if(e instanceof SocketTimeoutException){
+                            //TODO handle exception
+                        }
+                    }
+
+                    @Override
+                    public void onNext(YandexWordTranslation word) {
+                        setTranslation(word);
+                        Log.i("YandexTranslator", "translation: " + word.getWord() + " - " + word.getTranslates());
+                    }
                 });
-
-        return false;
-
+        return true;
     }
 
     @Override
-    public YandexWordTranslation getTranslations() throws NullPointerException {
+    public TextTranslation getTranslation() throws NullPointerException {
         return translation;
     }
 
-
+    public void setTranslation(TextTranslation translation) {
+        this.translation = translation;
+    }
 }

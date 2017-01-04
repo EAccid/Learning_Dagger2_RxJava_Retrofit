@@ -1,8 +1,8 @@
 package com.eaccid.txttranslator.presenter;
 
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
+import java.util.List;
 
 public interface BaseView {
     BasePresenter getPresenter();
-    void showTextTranslation(TextTranslation text);
+    void showTextTranslation(List<String> text);
 }

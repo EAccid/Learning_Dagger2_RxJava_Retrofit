@@ -1,6 +1,6 @@
-package com.eaccid.txttranslator.model.translator.ytranslator_impl.ytranslator;
+package com.eaccid.txttranslator.model.translator.ytranslator_impl;
 
-import com.eaccid.txttranslator.model.WordTranslation;
+import com.eaccid.txttranslator.model.YandexWordTranslation;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -8,7 +8,7 @@ import rx.Observable;
 public interface YandexTranslationService {
 
     @POST("api/v1.5/tr.json/translate")
-    Observable<WordTranslation> translate(
+    Observable<YandexWordTranslation> translate(
             @Query("key") String key,
             @Query("text") String text,
             @Query("lang") String lang

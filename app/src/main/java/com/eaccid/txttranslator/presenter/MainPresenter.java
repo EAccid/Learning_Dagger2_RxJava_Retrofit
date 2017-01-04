@@ -1,13 +1,14 @@
 package com.eaccid.txttranslator.presenter;
 
-import com.eaccid.txttranslator.model.translator.lingualeo_impl.translator.TranslatorFactory;
-import com.eaccid.txttranslator.model.translator.lingualeo_impl.translator.Translators;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.Translator;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
+import com.eaccid.txttranslator.provider.translator.WordDataProvider;
+
+import java.util.List;
 
 public class MainPresenter implements BasePresenter<MainActivity> {
 
     private MainActivity mView;
+    private WordDataProvider dataProvider = new WordDataProvider();
 
     @Override
     public void attachView(MainActivity mainActivity) {
@@ -25,9 +26,8 @@ public class MainPresenter implements BasePresenter<MainActivity> {
 
     public void onWordClicked(WordFromText wordFromText) {
         mView.showToast(wordFromText.getText());
-        Translator translator = TranslatorFactory.newTranslator(Translators.YANDEX_TRANSLATOR);
-        translator.translate(wordFromText.getText());
-        System.out.println(translator.getTranslations());
+        List<String> translations = dataProvider.procureTranslations(wordFromText);
+        mView.showTextTranslation(translations);
     }
 
 }

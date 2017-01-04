@@ -8,6 +8,7 @@ import com.eaccid.txttranslator.exceptions.NotImplementedException;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
 import com.eaccid.txttranslator.provider.fromtext.WordFromTextProviderImpl;
 
+//TODO refactor into several classes
 public class OnWordFromTextViewTouchListener implements View.OnTouchListener {
 
     public interface OnWordFromTextClickListener {
@@ -24,11 +25,12 @@ public class OnWordFromTextViewTouchListener implements View.OnTouchListener {
                     try {
                         ((OnWordFromTextClickListener) view.getContext()).onWordClicked(WordFromText);
                     } catch (Exception e) {
+                        e.printStackTrace();
                         throw new NotImplementedException("'interface " +
                                 "OnWordFromTextViewTouchListener.OnWordFromTextClickListener: ' " +
                                 "method is not implemented in " + "'" +
                                 view.getContext().getPackageName() + "." +
-                                view.getContext().getClass().getName() + "'", e);
+                                view.getContext().getClass().getName() + "'");
                     }
                 }
         }

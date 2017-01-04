@@ -1,11 +1,11 @@
-package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
+package com.eaccid.txttranslator.model;
 
 import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.LingualeoResponse;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.model.translator.translator.TextTranslation;
 
 import java.util.List;
 
-public class WordTranslation implements TextTranslation {
+public class LeoWordTranslation implements TextTranslation {
 
     private LingualeoResponse lingualeoResponse;
     private List<String> translates;
@@ -19,7 +19,7 @@ public class WordTranslation implements TextTranslation {
         return word;
     }
 
-    public WordTranslation (LingualeoResponse lingualeoResponse) {
+    public LeoWordTranslation(LingualeoResponse lingualeoResponse) {
         initLingualeoResponse(lingualeoResponse);
         loadTranslateData();
     }

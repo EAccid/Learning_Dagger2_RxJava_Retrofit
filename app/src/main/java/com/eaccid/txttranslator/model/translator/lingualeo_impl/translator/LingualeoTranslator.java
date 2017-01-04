@@ -1,12 +1,13 @@
 package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
 
+import com.eaccid.txttranslator.model.LeoWordTranslation;
 import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.RequestHandler;
 import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.RequestParameters;
-import com.eaccid.txttranslator.model.translator.ytranslator_impl.Translator;
+import com.eaccid.txttranslator.model.translator.translator.Translator;
 
 public class LingualeoTranslator implements Translator {
 
-    private WordTranslation translation;
+    private LeoWordTranslation translation;
 
     @Override
     public boolean translate(String word) {
@@ -14,12 +15,12 @@ public class LingualeoTranslator implements Translator {
         requestParameters.addParameter("word", word);
         RequestHandler requestHandler = RequestHandler.newUnauthorizedRequestWithParameters("http://lingualeo.com/api/gettranslates", requestParameters);
         requestHandler.handleRequest();
-        translation = new WordTranslation(requestHandler.getResponse());
+        translation = new LeoWordTranslation(requestHandler.getResponse());
         return !translation.isEmpty();
     }
 
     @Override
-    public WordTranslation getTranslations() throws NullPointerException {
+    public LeoWordTranslation getTranslation() throws NullPointerException {
         if (translation == null) throw new NullPointerException("WordFromTextImpl has not been translated");
         return translation;
     }
