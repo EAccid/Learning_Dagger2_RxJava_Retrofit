@@ -11,7 +11,7 @@ import com.eaccid.txttranslator.provider.fromtext.WordFromTextProviderImpl;
 public class OnWordFromTextViewTouchListener implements View.OnTouchListener {
 
     public interface OnWordFromTextClickListener {
-        void OnWordClicked(WordFromText WordFromText);
+        void onWordClicked(WordFromText WordFromText);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class OnWordFromTextViewTouchListener implements View.OnTouchListener {
                 WordFromText WordFromText = new WordFromTextProviderImpl().getWordByMotionEvent(tv, motionEvent);
                 if (!WordFromText.getText().isEmpty()) {
                     try {
-                        ((OnWordFromTextClickListener) view.getContext()).OnWordClicked(WordFromText);
+                        ((OnWordFromTextClickListener) view.getContext()).onWordClicked(WordFromText);
                     } catch (Exception e) {
                         throw new NotImplementedException("'interface " +
                                 "OnWordFromTextViewTouchListener.OnWordFromTextClickListener: ' " +
