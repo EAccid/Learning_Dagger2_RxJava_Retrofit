@@ -1,4 +1,3 @@
-# TXT Translator
-Work with Yandex Translator API
-
-Using Dagger2, Retrofit, RxJava
+Pet Project
+Translating TXT, Working with Yandex Translator API
+Using Dagger2, Retrofit, RxJava (Learning)
