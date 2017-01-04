@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.eaccid.txttranslator.injection.module.AppModule;
 import com.eaccid.txttranslator.injection.ApplicationContext;
-import com.eaccid.txttranslator.libtranslator.lingualeo_impl.dictionary.LingualeoServiceCookiesImpl;
+import com.eaccid.txttranslator.model.translator.lingualeo_impl.dictionary.LingualeoServiceCookiesImpl;
 
 import javax.inject.Singleton;
 import dagger.Component;

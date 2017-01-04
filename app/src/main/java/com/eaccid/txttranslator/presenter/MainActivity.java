@@ -12,15 +12,14 @@ import android.widget.Toast;
 
 import com.eaccid.txttranslator.R;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
-import com.eaccid.txttranslator.libtranslator.ytranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
 
 public class MainActivity extends AppCompatActivity implements BaseView, OnWordFromTextViewTouchListener.OnWordFromTextClickListener {
 
     MainPresenter mPresenter;
 
-
     @Override
-    public BasePresenter getPresenter() {
+    public MainPresenter getPresenter() {
         return mPresenter;
     }
 

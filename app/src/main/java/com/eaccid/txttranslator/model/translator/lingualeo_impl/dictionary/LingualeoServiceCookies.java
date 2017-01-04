@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.libtranslator.lingualeo_impl.dictionary;
+package com.eaccid.txttranslator.model.translator.lingualeo_impl.dictionary;
 
 public interface LingualeoServiceCookies {
 

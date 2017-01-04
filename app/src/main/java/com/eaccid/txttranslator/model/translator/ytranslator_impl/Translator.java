@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.libtranslator.ytranslator_impl;
+package com.eaccid.txttranslator.model.translator.ytranslator_impl;
 
 public interface Translator {
 

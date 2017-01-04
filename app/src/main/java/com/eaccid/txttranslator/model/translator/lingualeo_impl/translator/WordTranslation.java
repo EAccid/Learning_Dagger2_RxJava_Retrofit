@@ -1,7 +1,7 @@
-package com.eaccid.txttranslator.libtranslator.lingualeo_impl.translator;
+package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
 
-import com.eaccid.txttranslator.libtranslator.lingualeo_impl.connection.LingualeoResponse;
-import com.eaccid.txttranslator.libtranslator.ytranslator_impl.TextTranslation;
+import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.LingualeoResponse;
+import com.eaccid.txttranslator.model.translator.ytranslator_impl.TextTranslation;
 
 import java.util.List;
 

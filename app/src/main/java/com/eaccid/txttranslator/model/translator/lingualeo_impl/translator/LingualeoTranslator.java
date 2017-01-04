@@ -1,8 +1,8 @@
-package com.eaccid.txttranslator.libtranslator.lingualeo_impl.translator;
+package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
 
-import com.eaccid.txttranslator.libtranslator.lingualeo_impl.connection.RequestHandler;
-import com.eaccid.txttranslator.libtranslator.lingualeo_impl.connection.RequestParameters;
-import com.eaccid.txttranslator.libtranslator.ytranslator_impl.Translator;
+import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.RequestHandler;
+import com.eaccid.txttranslator.model.translator.lingualeo_impl.connection.RequestParameters;
+import com.eaccid.txttranslator.model.translator.ytranslator_impl.Translator;
 
 public class LingualeoTranslator implements Translator {
 

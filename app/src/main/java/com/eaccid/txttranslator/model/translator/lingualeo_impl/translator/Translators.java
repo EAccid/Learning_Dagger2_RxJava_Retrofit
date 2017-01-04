@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.libtranslator.lingualeo_impl.translator;
+package com.eaccid.txttranslator.model.translator.lingualeo_impl.translator;
 
 public enum Translators {
 

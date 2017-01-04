@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.libtranslator.dictionary;
+package com.eaccid.txttranslator.model.translator.dictionary;
 
 public interface Dictionary {
 

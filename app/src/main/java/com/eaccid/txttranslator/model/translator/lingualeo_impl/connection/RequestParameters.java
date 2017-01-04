@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.libtranslator.lingualeo_impl.connection;
+package com.eaccid.txttranslator.model.translator.lingualeo_impl.connection;
 
 import java.net.URLEncoder;
 import java.util.HashMap;
