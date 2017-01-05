@@ -4,4 +4,5 @@
     <string name="text_to_translate">Yandex.Translate is a statistical machine translation system. The system translates separate words, complete texts, and web pages. It is available as a web service and mobile application, and is also used in other Yandex products, such as translating web pages in Yandex.Browser.
 Yandex.Translate has an automated dictionary that sets it apart from the limited number of similar existing services. The technology, developed by a Yandex team of linguists and programmers, combines current statistical machine translation approaches with traditional linguistic tools.</string>
     <string name="translate">Translate</string>
+    <string name="input_text">input text</string>
 </resources>
