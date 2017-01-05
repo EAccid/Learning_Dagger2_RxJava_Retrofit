@@ -30,8 +30,16 @@ public class MainPresenter implements BasePresenter<MainActivity> {
     }
 
     public void onWordClicked(WordFromText wordFromText) {
-        mView.showToast(wordFromText.getText() + " has been selected");
-        dataProvider.procureTranslationsObservable(wordFromText)
+        makeTranslation(wordFromText.getText());
+    }
+
+    public void onButtonTranslateClick(String inputText) {
+        makeTranslation(inputText);
+    }
+
+    private void makeTranslation(String text) {
+        mView.showToast(text + " has been translated");
+        dataProvider.procureTranslationsObservable(text)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<String>>() {
             @Override
@@ -54,7 +62,4 @@ public class MainPresenter implements BasePresenter<MainActivity> {
         });
     }
 
-    public void onButtonTranslateClick() {
-
-    }
 }

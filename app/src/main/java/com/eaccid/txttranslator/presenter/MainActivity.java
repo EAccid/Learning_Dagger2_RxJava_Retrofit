@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.eaccid.txttranslator.R;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
     @BindView(R.id.fab)
     FloatingActionButton fab;
     @BindView(R.id.word_to_translate)
-    TextView word_to_translate;
+    EditText word_to_translate;
     @BindView(R.id.translated_text)
     TextView translated_text;
     @BindView(R.id.toolbar)
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
         text_to_translate.setOnTouchListener(new OnWordFromTextViewTouchListener());
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
 
     @OnClick(R.id.button_translate)
     public void onButtonTranslateClick() {
-        mPresenter.onButtonTranslateClick();
+        mPresenter.onButtonTranslateClick(word_to_translate.getText().toString());
     }
 
     @Override
