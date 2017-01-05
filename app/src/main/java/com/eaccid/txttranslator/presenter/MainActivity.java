@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements BaseView, OnWordF
 
     @Override
     public void showTextTranslation(List<String> text) {
-
+        translated_text.setText(text.toString());
     }
 
 }
