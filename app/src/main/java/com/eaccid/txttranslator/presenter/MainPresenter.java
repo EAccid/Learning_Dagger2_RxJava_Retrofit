@@ -21,7 +21,7 @@ public class MainPresenter implements BasePresenter<MainActivity> {
     }
 
     public void onFabClicked() {
-
+        mView.showToast("Fab has been clicked");
     }
 
     public void onWordClicked(WordFromText wordFromText) {
@@ -30,4 +30,7 @@ public class MainPresenter implements BasePresenter<MainActivity> {
         mView.showTextTranslation(translations);
     }
 
+    public void onButtonTranslateClick() {
+
+    }
 }

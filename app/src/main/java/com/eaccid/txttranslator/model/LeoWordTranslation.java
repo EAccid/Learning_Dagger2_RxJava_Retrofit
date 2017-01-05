@@ -70,9 +70,4 @@ public class LeoWordTranslation implements TextTranslation {
 
     }
 
-    // just for practicing reflection
-    private String readJsonResponseFromLingualeoAsString() {
-        return this.toString();
-    }
-
 }

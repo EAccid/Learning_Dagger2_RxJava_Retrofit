@@ -54,6 +54,7 @@ public class YandexTranslator implements Translator {
                     }
                 });
         return true;
+
     }
 
     @Override

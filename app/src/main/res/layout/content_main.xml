@@ -20,14 +20,23 @@
         android:layout_height="wrap_content"
         android:text="@string/text_to_translate" />
 
-    <Button
-        android:id="@+id/button_translate"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/translate" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/translate"/>
+        <EditText
+            android:id="@+id/word_to_translate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/translated_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
