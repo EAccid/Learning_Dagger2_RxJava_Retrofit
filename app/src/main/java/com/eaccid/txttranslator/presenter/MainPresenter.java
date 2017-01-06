@@ -3,6 +3,7 @@ package com.eaccid.txttranslator.presenter;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
 import com.eaccid.txttranslator.provider.translator.WordDataProvider;
 
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.List;
 
@@ -49,10 +50,8 @@ public class MainPresenter implements BasePresenter<MainActivity> {
 
             @Override
             public void onError(Throwable e) {
-                e.printStackTrace();
-                if (e instanceof UnknownHostException) {
-                    mView.showToast("Check internet connection");
-                }
+                String message = dataProvider.handleTranslationException(e);
+                mView.showToast(message);
             }
 
             @Override

@@ -3,11 +3,9 @@ package com.eaccid.txttranslator.model;
 import com.eaccid.txttranslator.model.translator.translator.TextTranslation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
 import java.util.List;
 
-public class YandexWordTranslation implements TextTranslation, Serializable {
+public class YandexWordTranslation implements TextTranslation {
 
     private String word;
     @SerializedName("text")

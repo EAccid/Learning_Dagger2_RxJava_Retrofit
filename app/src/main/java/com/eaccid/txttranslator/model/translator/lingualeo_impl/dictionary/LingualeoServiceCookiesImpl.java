@@ -13,7 +13,7 @@ public class LingualeoServiceCookiesImpl implements LingualeoServiceCookies {
 
     public LingualeoServiceCookiesImpl() {
         App.getAppComponent().inject(this);
-   }
+    }
 
     @Override
     public void storeCookies(String cookies) {

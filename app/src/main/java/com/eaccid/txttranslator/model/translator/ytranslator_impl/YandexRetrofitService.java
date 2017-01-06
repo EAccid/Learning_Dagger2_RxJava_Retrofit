@@ -1,21 +1,19 @@
 package com.eaccid.txttranslator.model.translator.ytranslator_impl;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.eaccid.txttranslator.App;
+import javax.inject.Inject;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class YandexRetrofitService {
 
-    public static YandexTranslationService createTranslationService() {
-        Gson gson = new GsonBuilder().create();
-        String BASE_URL = "https://translate.yandex.net";
-        Retrofit retrofit = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl(BASE_URL)
-                .build();
+    @Inject
+    Retrofit retrofit;
+
+    public YandexRetrofitService() {
+        App.getAppComponent().inject(this);
+    }
+
+    public YandexTranslationService createTranslationService() {
         return retrofit.create(YandexTranslationService.class);
     }
 }

@@ -5,6 +5,7 @@ import android.support.annotation.VisibleForTesting;
 import com.eaccid.txttranslator.injection.component.AppComponent;
 import com.eaccid.txttranslator.injection.component.DaggerAppComponent;
 import com.eaccid.txttranslator.injection.module.AppModule;
+import com.eaccid.txttranslator.injection.module.HttpModule;
 
 public class App extends Application {
     private static AppComponent component;
@@ -23,6 +24,8 @@ public class App extends Application {
         if (component == null) {
             component = DaggerAppComponent.builder()
                     .appModule(new AppModule(this))
+                    //todo from properties
+                    .httpModule(new HttpModule("https://translate.yandex.net"))
                     .build();
         }
     }
