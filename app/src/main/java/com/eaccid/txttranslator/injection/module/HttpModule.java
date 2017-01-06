@@ -1,16 +1,11 @@
 package com.eaccid.txttranslator.injection.module;
 
 import android.app.Application;
-
 import com.eaccid.txttranslator.presenter.NetworkAvailablenessImpl;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
