@@ -1,10 +1,12 @@
 package com.eaccid.txttranslator.injection.module;
 
 import android.app.Application;
+
 import com.eaccid.txttranslator.presenter.NetworkAvailablenessImpl;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ncornette.cache.OkCacheControl;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
@@ -54,6 +56,7 @@ public class HttpModule {
                     if (new NetworkAvailablenessImpl().isNetworkAvailable()) {
                         request = request.newBuilder().header("Cache-Control", "public, max-age=" + 60).build();
                     } else {
+                        //TODO doesn't work correctly: return "HTTP 504 Unsatisfiable Request (only-if-cached)"
                         request = request.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 28).build();
                     }
                     return chain.proceed(request);
@@ -70,6 +73,10 @@ public class HttpModule {
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
                 .build();
+    }
+
+    private OkCacheControl.NetworkMonitor provideNetworkMonitor() {
+        return () -> new NetworkAvailablenessImpl().isNetworkAvailable();
     }
 
 }
