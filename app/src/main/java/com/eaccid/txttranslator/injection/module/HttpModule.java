@@ -1,13 +1,17 @@
 package com.eaccid.txttranslator.injection.module;
 
 import android.app.Application;
+
 import com.eaccid.txttranslator.presenter.NetworkAvailablenessImpl;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ncornette.cache.OkCacheControl;
+
 import java.util.concurrent.TimeUnit;
+
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
@@ -50,7 +54,8 @@ public class HttpModule {
                 .forceCacheWhenOffline(networkMonitor)
                 .overrideServerCachePolicy(timeValue, timeUnit)
                 .apply()
-                .cache(cache).build();
+                .cache(cache)
+                .build();
     }
 
     @Provides
