@@ -51,6 +51,7 @@ public class HttpModule {
         final TimeUnit timeUnit = TimeUnit.SECONDS;
         return OkCacheControl
                 .on(new OkHttpClient.Builder())
+                //TODO doesn't work correctly: return "HTTP 504 Unsatisfiable Request (only-if-cached)"
                 .forceCacheWhenOffline(networkMonitor)
                 .overrideServerCachePolicy(timeValue, timeUnit)
                 .apply()
