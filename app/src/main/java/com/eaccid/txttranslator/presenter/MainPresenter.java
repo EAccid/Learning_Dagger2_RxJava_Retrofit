@@ -2,7 +2,9 @@ package com.eaccid.txttranslator.presenter;
 
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
 import com.eaccid.txttranslator.provider.translator.WordTranslationProvider;
+
 import java.util.List;
+
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -42,26 +44,27 @@ public class MainPresenter implements BasePresenter<MainActivity> {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
-        subscription = dataProvider.procureTranslationsObservable(text)
+        subscription = dataProvider
+                .procureTranslationsObservable(text)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<String>>() {
-            @Override
-            public void onCompleted() {
-                unsubscribe();
-            }
+                    @Override
+                    public void onCompleted() {
+                        unsubscribe();
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                String message = dataProvider.handleTranslationException(e);
-                mView.showToast(message);
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        String message = dataProvider.handleTranslationException(e);
+                        mView.showToast(message);
+                    }
 
-            @Override
-            public void onNext(List<String> translations) {
-                    mView.showTextTranslation(translations);
-            }
-        });
+                    @Override
+                    public void onNext(List<String> translations) {
+                        mView.showTextTranslation(translations);
+                    }
+                });
     }
 
 }

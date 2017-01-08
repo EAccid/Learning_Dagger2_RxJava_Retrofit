@@ -19,6 +19,6 @@ public class TranslatorFactory {
 
     }
 
-    public static TranslatorRx newRxTranslator(Translators yandexTranslator) {
+    public static TranslatorRx newRxTranslator(Translators tr) {
         return new YandexTranslator();    }
 }
