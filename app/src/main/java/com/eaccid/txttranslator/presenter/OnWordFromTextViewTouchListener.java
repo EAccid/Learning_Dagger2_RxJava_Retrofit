@@ -3,7 +3,6 @@ package com.eaccid.txttranslator.presenter;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-
 import com.eaccid.txttranslator.exceptions.NotImplementedException;
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
 import com.eaccid.txttranslator.provider.fromtext.WordFromTextProviderImpl;

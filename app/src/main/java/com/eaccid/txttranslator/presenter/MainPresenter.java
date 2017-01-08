@@ -1,20 +1,18 @@
 package com.eaccid.txttranslator.presenter;
 
 import com.eaccid.txttranslator.provider.fromtext.WordFromText;
-import com.eaccid.txttranslator.provider.translator.WordDataProvider;
-
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
+import com.eaccid.txttranslator.provider.translator.WordTranslationProvider;
 import java.util.List;
-
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class MainPresenter implements BasePresenter<MainActivity> {
 
     private MainActivity mView;
-    private WordDataProvider dataProvider = new WordDataProvider();
+    private WordTranslationProvider dataProvider = new WordTranslationProvider();
+    private Subscription subscription;
 
     @Override
     public void attachView(MainActivity mainActivity) {
@@ -24,6 +22,7 @@ public class MainPresenter implements BasePresenter<MainActivity> {
     @Override
     public void detachView() {
         mView = null;
+        if (subscription != null) subscription.unsubscribe();
     }
 
     public void onFabClicked() {
@@ -40,9 +39,13 @@ public class MainPresenter implements BasePresenter<MainActivity> {
 
     private void makeTranslation(String text) {
         mView.showToast(text + " has been translated");
-        dataProvider.procureTranslationsObservable(text)
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+        subscription = dataProvider.procureTranslationsObservable(text)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<String>>() {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<String>>() {
             @Override
             public void onCompleted() {
                 unsubscribe();
@@ -56,7 +59,7 @@ public class MainPresenter implements BasePresenter<MainActivity> {
 
             @Override
             public void onNext(List<String> translations) {
-                mView.showTextTranslation(translations);
+                    mView.showTextTranslation(translations);
             }
         });
     }

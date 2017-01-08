@@ -1,4 +1,4 @@
-package com.eaccid.txttranslator.presenter;
+package com.eaccid.txttranslator.injection.module;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

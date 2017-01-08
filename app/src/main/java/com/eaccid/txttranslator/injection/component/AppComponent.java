@@ -7,7 +7,7 @@ import com.eaccid.txttranslator.injection.ApplicationContext;
 import com.eaccid.txttranslator.injection.module.HttpModule;
 import com.eaccid.txttranslator.model.translator.lingualeo_impl.dictionary.LingualeoServiceCookiesImpl;
 import com.eaccid.txttranslator.model.translator.ytranslator_impl.YandexRetrofitService;
-import com.eaccid.txttranslator.presenter.NetworkAvailablenessImpl;
+import com.eaccid.txttranslator.injection.module.NetworkAvailablenessImpl;
 import javax.inject.Singleton;
 import dagger.Component;
 import retrofit2.Retrofit;
